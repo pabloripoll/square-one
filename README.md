@@ -1,15 +1,14 @@
 # Square1 test - Blog Admin/Writer
 
 ## **Steps to set up the project**
+1. Create project directory
 
-1. Clone project with git
-
+2. Clone project with git
 ```bash
-git clone git@github.com:pabloripoll/square-one.git
+$ git clone git@github.com:pabloripoll/square-one.git
 ```
 
-2. Create .env file in root folder of the application
-
+3. Check .env file has been dowloaded or create new one in root folder of the application
 ```
 APP_NAME=E3ERP
 APP_ENV=local
@@ -41,42 +40,65 @@ MAIL_ENCRYPTION=null
 
 ADMIN_PATH_PREFIX=/~AdminER21
 ```
-Admin folder is defined throught constant ADMIN_PATH_PREFIX
+Admin folder is defined throught constant ADMIN_PATH_PREFIX to hide/secure admin folder from public access in production
 
-3. Create and start the containers
+4. Install composer packages. It wont be neccessary to perform this installation on PHP container
 ```bash
-make run
+$ composer install
 ```
 
-4. Generate vendor files
+5. Update files and directories permission and ownership
 ```bash
-make composer-install
+$ sudo find . -type f -exec chmod 644 {} \;
+$ sudo find . -type d -exec chmod 755 {} \;
+$ sudo chown -R $USER:www-data .
+$ sudo chgrp -R www-data storage bootstrap/cache
+$ sudo chmod -R ug+rwx storage bootstrap/cache
+```
+Then, perform the following commands
+```bash
+$ php artisan cache:clear
+$ php artisan config:clear
+$ composer dump-autoload
 ```
 
-5. Generate Laravel key
+6. Create and start the containers
 ```bash
-make generate-key
+$ make run
+```
+
+7. Generate Laravel key *this will automatically log into php container and then log out*
+```bash
+$ make generate-key
 ```
 
 6. Get into the database container as root user
 ```bash
-make ssh-db-root
+$ make ssh-db-root
 ```
 
 6. 2. Create a new database if it doesn't exist
 ```bash
-mysql -h localhost -u root -p -e "create database squareone default character set utf8 collate utf8_unicode_ci;"
+$ mysql -h localhost -u root -p -e "create database squareone default character set utf8 collate utf8_unicode_ci;"
 ```
 
 7. Migrations & Seeders
 Migration have to be created locally and run migrate on php container
 ```bash
-make ssh-php
-php artisan migrate
+$ make ssh-php
 ```
-Also seeders `php artisan make:seeder UserSeeder` have to be created locally and then run on php container
+Migration updates have to be created locally and the migrate into php container
 ```bash
-php artisan db:seed --class=UserSeeder
+$ php artisan migrate
+```
+Run Laratrus seed
+```bash
+$ php artisan db:seed
+```
+Also seeders as for e.g. `php artisan make:seeder AdminUserSeeder` have to be created locally and then run into php container
+```bash
+$ php artisan db:seed --class=AdminUserSeeder
+$ php artisan db:seed --class=WriterUserSeeder
 ```
 
 ### That's it! ;)
