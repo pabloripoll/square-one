@@ -1,4 +1,4 @@
-# Square1 test exam web docker-based development environment
+# Square1 test - Blog Admin/Writer
 
 ## **Steps to set up the project**
 
