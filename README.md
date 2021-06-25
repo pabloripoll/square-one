@@ -5,7 +5,7 @@
 1. Clone project with git
 
 ```bash
-git clone git@gitlab.com:erp29/erp.git
+git clone git@github.com:pabloripoll/square-one.git
 ```
 
 2. Create .env file in root folder of the application
@@ -39,7 +39,7 @@ MAIL_ENCRYPTION=null
 
 ...
 
-ADMIN_PATH_PREFIX=/~Admin57asRtNzhj#193
+ADMIN_PATH_PREFIX=/~AdminER21
 ```
 Admin folder is defined throught constant ADMIN_PATH_PREFIX
 
@@ -86,25 +86,21 @@ php artisan db:seed --class=UserSeeder
 ## **Apps & services**
 
 Main application
-
 ```
 http://localhost:8880
 ```
 
 phpMyAdmin
-
 ```
 http://localhost:8881
 ```
 
 MailCatcher
-
 ```
 http://localhost:1080
 ```
 
 RabbitMQ Management
-
 ```
 http://localhost:15672
 ```
