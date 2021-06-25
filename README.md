@@ -1,11 +1,11 @@
 # Test - Blog Admin/Writer
 
-### [Laravel 8](https://laravel.com/docs/8.x/)
+### [Laravel 8](https://laravel.com/docs/8.x/) Framework
 This test is also using [Laratrust](https://laratrust.santigarcor.me/), a Laravel role-based access control package.
 
-#### requirements
+#### Pre requisites required
 1. Docker
-2. Docker Compose
+2. Docker Compose - Version 3
 3. Composer
 
 
