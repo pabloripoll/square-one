@@ -1,6 +1,6 @@
 # Test - Blog Admin/Writer
 
-#### Laravel 8
+### [Laravel 8](https://laravel.com/docs/8.x/)
 This test is also using [Laratrust](https://laratrust.santigarcor.me/), a Laravel role-based access control package.
 
 #### requirements
