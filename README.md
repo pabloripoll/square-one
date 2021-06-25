@@ -1,4 +1,13 @@
-# Square1 test - Blog Admin/Writer
+# Test - Blog Admin/Writer
+
+#### Laravel 8
+This test is also using [Laratrust](https://laratrust.santigarcor.me/), a Laravel role-based access control package.
+
+#### requirements
+1. Docker
+2. Docker Compose
+3. Composer
+
 
 ## **Steps to set up the project**
 1. Create project directory
