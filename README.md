@@ -70,28 +70,43 @@ $ php artisan cache:clear
 $ php artisan config:clear
 $ composer dump-autoload
 ```
+File Storage
 
-6. Create and start the containers
+By default, files are uploaded into storage directory. Private and public files are placed as:
+```bash
+/{project}
+|_/storage
+  |_/app
+    |_/private
+    |_/public
+
+```
+6. For a better file administration with above setting, create a symlink:
+```bash
+$ php artisan storage:link
+```
+
+7. Create and start the containers
 ```bash
 $ make run
 ```
 
-7. Generate Laravel key *this will automatically log into php container and then log out*
+8. Generate Laravel key *this will automatically log into php container and then log out*
 ```bash
 $ make generate-key
 ```
 
-6. Get into the database container as root user
+9. Get into the database container as root user
 ```bash
 $ make ssh-db-root
 ```
 
-6. 2. Create a new database if it doesn't exist
+10. 2. Create a new database if it doesn't exist
 ```bash
 $ mysql -h localhost -u root -p -e "create database squareone default character set utf8 collate utf8_unicode_ci;"
 ```
 
-7. Migrations & Seeders
+11. Migrations & Seeders
 Migration have to be created locally and run migrate on php container
 ```bash
 $ make ssh-php
